@@ -1,0 +1,48 @@
+<html>
+<head>
+<title></title>
+<script type="text/javascript"
+ src="http://sandbox.runjs.cn/uploads/rs/61/6aei7et0/react.js"></script>
+<script type="text/javascript"
+ src="http://sandbox.runjs.cn/uploads/rs/61/6aei7et0/JSXTransformer.js"></script>
+</head>
+<body>
+ <div>
+  <a href="http://blog.fengxiaotx.com/">Bane-开发者成长之路</a>
+ </div>
+ <div id="example"></div>
+</body>
+<script type="text/jsx">
+    var CoutryDropDomdown = React.createClass({
+      getInitialsState:function(){
+        return {showOptions:false};
+      },
+      render:function(){
+        var options;
+        if(this.state.showOptions) {
+          options=(
+            <ul className="options">
+              <li>fdsfds</li>
+              <li>fdfdfsdddddddd</li>
+              <li>11111fdsfds</li>
+            <ul>
+          )
+        }
+        return (
+          <div className="dropdown" onClick={this.handleClick}>
+            <label> fdsf</label>
+          </div>
+        );
+      },
+      handleClick:function(){
+        this.setState({showOptions:true});
+
+      }
+      
+  })
+Creat.render(
+<CoutryDropDomdown />,
+      document.getElementById('example')
+)
+  </script>
+</html>

@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<title></title>
+
+	<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/61/6aei7et0/react.js"></script>
+	<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/61/6aei7et0/JSXTransformer.js"></script>
+	</head>
+	<body>
+		<div><a href="http://blog.fengxiaotx.com/">Bane-开发者成长之路</a></div>
+		<div id="example"></div>
+	</body>
+	<script type="text/jsx">
+	  var data=[{"name":"shawn"},{"name":"joner"}];
+		var CommentRow = React.createClass({
+			render:function(){
+				return (
+					<div>{this.props.name}</div>
+					);
+			}
+		});
+
+		var CommentList=React.createClass({
+			render: function() {
+			  		var items=this.props.data.map(function(row,index){
+						return (
+								<CommentRow name={row.name}></CommentRow>
+								);
+					});
+				    return (
+				      <div>
+					      <div>
+					        Hello, world! I am a CommentBox.
+					      	
+					      </div>
+						  <div className="sdd">{items}</div>
+					  </div>
+				    );
+			}			
+		});
+
+		var CommentForm=React.createClass({
+			handleSubmit:function(e){
+				e.preventDefault();
+				 var name = this.refs.name.getDOMNode().value.trim();
+				 if(!name){
+				 	alert("请输入姓名");
+				 	return ;
+				 }
+				 this.props.onCommentSubmit({name:name});
+				 this.refs.name.getDOMNode().value = '';
+			},
+			render:function(){
+				return (
+					<form onSubmit={this.handleSubmit}>
+						<input type="text" placeholder="姓名" ref="name"/>
+						<input type="submit" value="提交" />
+					</form>
+					);
+			}
+		});
+
+		var CommentBox = React.createClass({
+			handleCommentSubmit:function(comment){
+				var names=this.state.data;
+				var nameJosn=names.concat([comment]);
+				this.setState({data:nameJosn});
+			},
+			getInitialState:function(){
+				return {data:data};
+			},
+			render:function(){
+				return (
+					<div>
+						<h1>测试</h1>
+						<CommentList data={this.state.data}/>
+						<CommentForm onCommentSubmit={this.handleCommentSubmit}/>
+					</div>
+					);
+			}
+		});
+		React.render(
+		  <CommentBox />,
+		  document.getElementById('example')
+		);
+	</script>
+</html>

@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title></title>
+  <script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/61/6aei7et0/react.js"></script>
+  <script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/61/6aei7et0/JSXTransformer.js"></script>
+  </head>
+  <body>
+    <div><a href="http://blog.fengxiaotx.com/"></a></div>
+    <div id="example"></div>
+  </body>
+  <script type="text/jsx">
+var data=[{"cont":"shawn"},{"cont":"joner"}];
+    var ComRow = React.createClass({
+      render:function(){
+        return <div>{this.props.cont}</div>;
+      }
+    });
+    var ComList = React.createClass({
+      render:function(){
+          //console.log(this.props.data);
+          var items= this.props.data.map(function(row,index){
+          //  console.log(row);
+            return (<ComRow cont={row.cont}></ComRow>)
+          });
+          return (
+             <div>{items}</div>
+          );
+      }
+    });
+    var ComForm = React.createClass({
+      handleSubmit :function(e){
+         e.preventDefault();
+         var cont = this.refs.component.getDOMNode().value.trim();
+          if(!cont){
+            alert("您没有输入内容");
+            return ;
+          }
+        this.props.newContent({cont:cont});
+
+        this.refs.component.getDOMNode().value = '';
+      },
+      render:function(){
+        return (
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" placeholder="姓名" ref="component"/>
+            <input type="submit" value="提交" />
+          </form>
+          );
+      }
+    });
+var ComBox = React.createClass({
+    handleComSub:function(new_conts){
+       var conts=this.state.data;
+       var contsJson = conts.concat([new_conts]);
+       this.setState({data:contsJson});
+    },
+    getInitialState:function(){
+      return {data:data};
+    },
+    render:function(){
+     return  (<div>
+        <ComList data={this.state.data} />
+        <ComForm newContent={this.handleComSub} />
+      </div>);
+    }
+});
+
+ React.render(
+      <ComBox />,
+      document.getElementById('example')
+    );
+
+  
+  </script>
+</html>

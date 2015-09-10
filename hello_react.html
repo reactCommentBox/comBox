@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="build/react.js"></script>
+    <script src="build/JSXTransformer.js"></script>
+
+  </head>
+  <body>
+    <div id="example"></div>
+	<div id="texts"></div>
+    <script type="text/jsx">
+        var myDivElement = <div className='foo'/>;
+        React.render(myDivElement,document.body);
+
+       var Nav,app = <nav color="blue"/>;
+       var app = React.createElement(nav,{color:"blue"});
+React.render(app,document.body);
+       /* var MyComponent = React.createClass({/!*...*!/});
+        var myElement = <MyComponent someProperty={true} />;
+        console.log(myElement);
+        React.render(myElement, document.body);
+        */
+      /*var HelloWorld = React.createClass({
+		  render: function() {
+
+			return (
+			  <p>
+				Hello, <input type="text" placeholder="Your name here" />!
+ {this.props.dates}
+				<br></br>
+				It is {this.props.date.toTimeString()}
+
+			  </p>
+			);
+		  }
+	  });
+
+	  setInterval(function() {
+		  React.render(
+			<HelloWorld date={new Date()}  />,
+			document.getElementById('example')
+		  );
+	  }, 500);*/
+	 /* var LikeButton = React.createClass({
+  getInitialState: function() {
+    return {liked: false};
+  },
+  handleClick: function(event) {
+    this.setState({liked: !this.state.liked});
+  },
+  render: function() {
+    var text = this.state.liked ? 'like' : 'haven\'t liked';
+    return (
+      <p onClick={this.handleClick}>
+        You {text} this. Click to toggle.
+      </p>
+    );
+  }
+});
+
+React.render(
+  <LikeButton />,
+  document.getElementById('example')
+);
+
+var child = React.createElement('li', {id : 'aaa'},'react');
+var root = React.createElement('ul', { className: 'my-list' }, child);
+React.render(child, document.getElementById('texts'));*/
+    </script>
+  </body>
+</html>
